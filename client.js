@@ -36,10 +36,10 @@ function readyNow() {
 // creates variable called tbody, which sets up the space where the submitted data will be entered.
 // append: moves the variable called tbody into the table that was created at the beginning of the function.
 function appendDom() {
-    let table = $('<table id="eData"></table>');
-    table.append('<thead class="eDataHeader"><tr><th>First Name</th><th>Last Name</th><th>ID Number</th><th>Title</th><th>Salary</th></thead>');
+    let table = $('<table id="eData" class="table table-striped table-dark"></table>');
+    table.append('<thead class="thead thead-dark eDataHeader"><tr><th>First Name</th><th>Last Name</th><th>ID Number</th><th>Title</th><th>Salary</th></thead>');
 
-    let tbody = $('<tbody id="eDataBody"></tbody>');
+    let tbody = $('<tbody id="eDataBody" class=""></tbody>');
     table.append(tbody);
 
     $('#presentation').append(table);

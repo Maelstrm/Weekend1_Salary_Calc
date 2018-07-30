@@ -2,6 +2,9 @@
 <html lang="en">
 
 <head>
+
+    <!-- <meta http-equiv="refresh" content="1"> -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -25,38 +28,47 @@
     <div class="jumbotron">
 
         <!-- Header -->
-        <header>
-            <h1>Mater Development</h1>
-            <h2>Salary Calculator</h2>
+        <header class="bg-dark header">
+            <h1 class="text-white">Mater Development</h1>
+            <h2 class="text-muted">Salary Calculator</h2>
         </header>
 
         <!-- Main Content -->
         <div>
 
             <!-- Form -->
-            <div class="addButtons">
-                <input id="eFirstName" type="text" placeholder="First Name"></input>
-                <input id="eLastName" type="text" placeholder="Last Name"></input>
-                <input id="eId" type="number" placeholder="ID Number"></input>
-                <input id="eTitle" type="text" placeholder="Title"></input>
-                <input id="eSalary" type="number" placeholder="Salary"></input>
-                <button id="submitButton" type="submit">Submit</button>
+            <div id="form">
+                <div class="addButtons">
+                    <input id="eFirstName" type="text" placeholder="First Name"></input>
+                    <input id="eLastName" type="text" placeholder="Last Name"></input>
+                    <input id="eId" type="number" placeholder="ID Number"></input>
+                    <input id="eTitle" type="text" placeholder="Title"></input>
+                    <input id="eSalary" type="number" placeholder="Salary"></input>
+                    <button id="submitButton"   class="btn btn-primary btn-sm button type="submit">Submit</button>
+                </div>
+
+                <div class="deleteButtons">
+                    <input id="eDelete" type="number" placeholder="ID Number"></input>
+                    <button id="deleteButton" class="btn btn-danger btn-sm button" type="submit">Delete</button>
+                </div>
             </div>
 
-            <div class="deleteButtons">
-                    <input id="eDelete" type="number" placeholder="ID Number"></input>
-                    <button id="deleteButton" type="submit">Submit</button>
-                </div>
+            <hr>
 
             <!-- Data Presented Here -->
             <div id="presentation">
+
             </div>
 
+            <hr>
+
             <!-- Final Calculation Here -->
-            <div class="row" id="finalCalculation">
+            <div class="bg-dark text-muted row" id="finalCalculation">
                 <span>
                     <h2>Total Monthly: </h2>
                 </span>
+
+                <hr>
 
                 <!-- Total Salary Calculations here -->
                 <span id=totalCalc>
@@ -64,11 +76,12 @@
                 </span>
             </div>
 
+
         </div>
 
         <!-- Page Footer -->
         <footer>
-            <p>Project by Ja'keh Clark - hello@JClarkWorks.com </p>
+            <h6>Project by Ja'keh Clark - hello@JClarkWorks.com </h6>
         </footer>
 
     </div>
