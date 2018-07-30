@@ -57,6 +57,8 @@ function eventHandlers() {
 function deleteClick() {
     let eDelete = Number($('#eDelete').val());
     removeEmployee(eDelete);
+    totalESalary();
+    monthlyESalary(totalSalary);
     emptyFields();
 } // end deleteClick
 
@@ -82,32 +84,26 @@ function submitClick() {
     emptyFields();
 
     // uses the current totalSalary and divides by 12 to get monthly
-
+    // pushes new salary to DOM
     totalESalary();
+    monthlyESalary(totalSalary);
 
 } // End submitclick
 
-// // adds a new salary to the total salary
-// function salaryCalc(newSalary) {
-//     totalSalary += newSalary;
-//     return totalSalary;
-// } //end SalaryCalc
-
-// // adds a new salary to the total salary
-// function delCalc(delSalary) {
-//     totalSalary -= delSalary;
-//     return totalSalary;
-// } //end SalaryCalc
 
 function totalESalary() {
-    totalSalary = 0;
-    for (i = 0; i < allEmployees.length; i++) {
-        totalSalary = totalSalary + Number(allEmployees[i].eSalary);
+    totalSalary = 0
+
+    for (employee of allEmployees) {
+        totalSalary = totalSalary + Number(employee.eSalary);
     }
 
-    monthlySalary = totalSalary/12;
-    
-    $('#totalCalc').html('<h3 id="mSalary">' + monthlySalary + '</h3>');
+    return totalSalary
+}
+
+
+function monthlyESalary(totalSalary) {
+    let monthlySalary = (totalSalary / 12).toFixed(2);
 
     if (monthlySalary > 20000) {
         $('#finalCalculation').removeClass('bg-dark');
@@ -116,9 +112,8 @@ function totalESalary() {
         $('#tMonthlyTitle').css('color', 'white');
     }
 
-    return totalSalary;
+    $('#totalCalc').html('<h3 id="mSalary">' + monthlySalary + '</h3>');
 }
-
 
 // Adds new employee to the dom.
 function addEmployee(thisFirstName, thisLastName, thisId, thisTitle, thisSalary) {
@@ -130,19 +125,19 @@ function addEmployee(thisFirstName, thisLastName, thisId, thisTitle, thisSalary)
 function removeEmployee(eDelete) {
 
     // for each of the employees in allEmployees, check if the ID matches. If so, delete the employee's row
-    for (i = 0; i < allEmployees.length; i++) {
-        if (allEmployees[i].eId == eDelete) {
+    for (let employee of allEmployees) {
+        if (employee.eId == eDelete) {
 
             // i used concatenation to create the jquery here because i needed the target to change based on the loop.
             // I'm very surprised this worked!
-            let currentDelete = ('#' + allEmployees[i].eId)
+            let currentDelete = ('#' + employee.eId)
             $(currentDelete).remove();
 
-            allEmployees.splice(i, 1);
+            allEmployees.splice(employee, 1);
+            return;
         }
+
     }
-    totalESalary();
-    return;
 } //end removeEmployee
 
 
