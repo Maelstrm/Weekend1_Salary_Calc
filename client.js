@@ -39,6 +39,7 @@ function appendDom() {
     let table = $('<table id="eData" class="table table-striped table-dark"></table>');
     table.append('<thead class="thead thead-dark eDataHeader"><tr><th>First Name</th><th>Last Name</th><th>ID Number</th><th>Title</th><th>Salary</th></thead>');
 
+    // The table where the data will be displayed on the DOM
     let tbody = $('<tbody id="eDataBody" class=""></tbody>');
     table.append(tbody);
 
@@ -47,15 +48,17 @@ function appendDom() {
 
 // this is where handlers go. Handlers will listen for events that happen on the dom elements, such as clicks.
 function eventHandlers() {
-    //  listen for the submit button
+    //  listen for the submit & submit button
     $('#submitButton').on('click', submitClick);
     $('#deleteButton').on('click', deleteClick);
 } // eventHandlers end
 
+// delete function, which recieves the ID number of the employee and empties the field.
 function deleteClick() {
     let eDelete = Number($('#eDelete').val());
     removeEmployee(eDelete);
-}
+    emptyFields();
+} // end deleteClick
 
 // recieves the input field information & assigns them to variables
 // uses the variables as input for the Employee constuctor
@@ -68,30 +71,37 @@ function submitClick() {
     let newTitle = $("#eTitle").val();
     let newSalary = $("#eSalary").val();
 
+    // pushes new employee to allEmployees array
+
     allEmployees.push(new Employee(newFirstName, newLastName, newId, newTitle, newSalary));
+
+    // adds new employee to the dom
     addEmployee(newFirstName, newLastName, newId, newTitle, newSalary);
 
+    // calls function that empties fields
     emptyFields();
 
+    // calls salary from this new employee and adds it to the total salary
     salaryCalc(Number(newSalary));
 
-    monthlySalary = (totalSalary/12).toFixed(2);
+    // uses the current totalSalary and divides by 12 to get monthly
+    monthlySalary = (totalSalary / 12).toFixed(2);
 
-
+    // appends monthly salary to dom to replace the previous value that was displayed
     $('#totalCalc').html('<h3>' + monthlySalary + '</h3>');
 
+    // if monthly salary is greater than 20000, turns background red
     if (monthlySalary > 20000) {
         $('#finalCalculation').css('background-color', 'red');
     }
 
 } // End submitclick
 
+// adds a new salary to the total salary
 function salaryCalc(newSalary) {
-
     totalSalary += newSalary;
     return totalSalary;
-
-}
+} //end SalaryCalc
 
 
 // Adds new employee to the dom.
@@ -100,13 +110,20 @@ function addEmployee(thisFirstName, thisLastName, thisId, thisTitle, thisSalary)
 
 } //end addEmployee
 
+// function that deletes the employee by id number
 function removeEmployee(eDelete) {
 
+    // for each of the employees in allEmployees, check if the ID matches. If so, delete the employee's row
     for (i = 0; i < allEmployees.length; i++) {
         if (allEmployees[i].eId == eDelete) {
+
+            // i used concatenation to create the jquery here because i needed the target to change based on the loop.
+            // I'm very surprised this worked!
             let currentDelete = ('#' + allEmployees[i].eId)
             $(currentDelete).remove();
         }
+
+        // This is the part that actually removes the employee from the array I could probably have this inside of the previous if statement.
 
         const index = allEmployees.indexOf(i);
 
@@ -115,12 +132,15 @@ function removeEmployee(eDelete) {
         }
     }
     return;
-}
+} //end removeEmployee
 
+
+// this part handles clearing the fields. this works for both delete and submit
 function emptyFields() {
     $("#eFirstName").val('');
     $("#eLastName").val('');
     $("#eId").val('');
     $("#eTitle").val('');
     $("#eSalary").val('');
-}
+    $("#eDelete").val('');
+} // end emptyFields
