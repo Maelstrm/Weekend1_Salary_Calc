@@ -144,3 +144,5 @@ function emptyFields() {
     $("#eSalary").val('');
     $("#eDelete").val('');
 } // end emptyFields
+
+// end code
