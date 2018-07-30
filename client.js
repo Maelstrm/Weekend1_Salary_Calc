@@ -74,7 +74,6 @@ function submitClick() {
     let newSalary = $("#eSalary").val();
 
     // pushes new employee to allEmployees array
-
     allEmployees.push(new Employee(newFirstName, newLastName, newId, newTitle, newSalary));
 
     // adds new employee to the dom
@@ -84,13 +83,15 @@ function submitClick() {
     emptyFields();
 
     // uses the current totalSalary and divides by 12 to get monthly
-    // pushes new salary to DOM
+    // pushes new monthly salary to DOM
     totalESalary();
     monthlyESalary(totalSalary);
 
 } // End submitclick
 
 
+// resets total salary to 0, then loops through the array allEmployees to calculate new total.
+// returns totalSalary to change the value of the global variable
 function totalESalary() {
     totalSalary = 0
 
@@ -99,9 +100,10 @@ function totalESalary() {
     }
 
     return totalSalary
-}
+} //end totalESalary
 
-
+// takes the current totalSalary and divides it by 2, with 2 decimal places
+// modifies the dom with new monthlySalray
 function monthlyESalary(totalSalary) {
     let monthlySalary = (totalSalary / 12).toFixed(2);
 
