@@ -36,7 +36,7 @@ function readyNow() {
 // creates variable called tbody, which sets up the space where the submitted data will be entered.
 // append: moves the variable called tbody into the table that was created at the beginning of the function.
 function appendDom() {
-    let table = $('<table id="eData" class="table table-striped table-dark"></table>');
+    let table = $('<table id="eData" class="table table-striped infoTable"></table>');
     table.append('<thead class="thead thead-dark eDataHeader"><tr><th>First Name</th><th>Last Name</th><th>ID Number</th><th>Title</th><th>Salary</th></thead>');
 
     // The table where the data will be displayed on the DOM
@@ -93,7 +93,7 @@ function submitClick() {
     // if monthly salary is greater than 20000, turns background red
     if (monthlySalary > 20000) {
         $('#finalCalculation').removeClass('bg-dark');
-        $('#finalCalculation').css('background-color', 'darkRed');
+        $('#finalCalculation').css('background-color', 'rgba(139, 0, 0, 0.637)');
         $('#mSalary').css('color', 'white');
         $('#tMonthlyTitle').css('color', 'white');
     }

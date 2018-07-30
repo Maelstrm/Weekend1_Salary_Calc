@@ -28,7 +28,7 @@
     <div class="jumbotron">
 
         <!-- Header -->
-        <header class="bg-dark header">
+        <header class="header labels container-fluid">
             <h1 class="text-white">Mater Development</h1>
             <h2 class="text-muted">Salary Calculator</h2>
         </header>
@@ -37,7 +37,7 @@
         <div>
 
             <!-- Form -->
-            <div id="form" class="container">
+            <div id="form" class="container-fluid">
                 <div class="addButtons" id="addButtons">
                     <input id="eFirstName" type="text" placeholder="First Name"></input>
                     <input id="eLastName" type="text" placeholder="Last Name"></input>
@@ -63,21 +63,20 @@
             <hr>
 
             <!-- Final Calculation Here -->
-            <div class="bg-dark text-muted row finalCalculation" id="finalCalculation">
-                <span>
-                    <h2 id="tMonthlyTitle">Total Monthly: </h2>
-                </span>
+            <div class="text-muted labels text-right row" id="finalCalculation">
 
-                <hr>
+                   <div id="tMonthlyTitle">
+                        <h2 >Total Monthly: </h2>
+                   </div>
 
                 <!-- Total Salary Calculations here -->
-                <span id="totalCalc">
+                <div id="totalCalc">
+                </div>
 
-                </span>
             </div>
-
-
         </div>
+        <hr>
+
 
         <!-- Page Footer -->
         <footer>
