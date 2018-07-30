@@ -108,10 +108,17 @@ function monthlyESalary(totalSalary) {
     let monthlySalary = (totalSalary / 12).toFixed(2);
 
     if (monthlySalary > 20000) {
-        $('#finalCalculation').removeClass('bg-dark');
+        // $('#finalCalculation').removeClass('bg-dark');
         $('#finalCalculation').css('background-color', 'rgba(139, 0, 0, 0.637)');
         $('#mSalary').css('color', 'white');
         $('#tMonthlyTitle').css('color', 'white');
+    } else {
+        {
+            // $('#finalCalculation').removeClass('bg-dark');
+            $('#finalCalculation').css('background-color', '#212529a9');
+            $('#mSalary').css('color', 'yellowgreen');
+            $('#tMonthlyTitle').css('color', '#6c757d');
+        }
     }
 
     $('#totalCalc').html('<h3 id="mSalary">' + monthlySalary + '</h3>');
