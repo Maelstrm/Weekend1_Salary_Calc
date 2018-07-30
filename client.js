@@ -126,7 +126,11 @@ function monthlyESalary(totalSalary) {
 
 // Adds new employee to the dom.
 function addEmployee(thisFirstName, thisLastName, thisId, thisTitle, thisSalary) {
-    $('#eData').append('<tr id="' + thisId + '"><td>' + thisFirstName + '</td><td>' + thisLastName + '</td><td>' + thisId + '</td><td>' + thisTitle + '</td><td>' + thisSalary + '</td></tr>')
+
+    // converts salary back into a string and shows 2 decimals
+    let thisSalaryLog = Number(thisSalary).toFixed(2)
+
+    $('#eData').append('<tr id="' + thisId + '"><td>' + thisFirstName + '</td><td>' + thisLastName + '</td><td>' + thisId + '</td><td>' + thisTitle + '</td><td>' + thisSalaryLog + '</td></tr>');
 
 } //end addEmployee
 
