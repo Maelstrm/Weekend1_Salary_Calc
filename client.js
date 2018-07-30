@@ -81,16 +81,34 @@ function submitClick() {
     // calls function that empties fields
     emptyFields();
 
-    // calls salary from this new employee and adds it to the total salary
-    salaryCalc(Number(newSalary));
-
     // uses the current totalSalary and divides by 12 to get monthly
-    monthlySalary = (totalSalary / 12).toFixed(2);
 
-    // appends monthly salary to dom to replace the previous value that was displayed
+    totalESalary();
+
+} // End submitclick
+
+// // adds a new salary to the total salary
+// function salaryCalc(newSalary) {
+//     totalSalary += newSalary;
+//     return totalSalary;
+// } //end SalaryCalc
+
+// // adds a new salary to the total salary
+// function delCalc(delSalary) {
+//     totalSalary -= delSalary;
+//     return totalSalary;
+// } //end SalaryCalc
+
+function totalESalary() {
+    totalSalary = 0;
+    for (i = 0; i < allEmployees.length; i++) {
+        totalSalary = totalSalary + Number(allEmployees[i].eSalary);
+    }
+
+    monthlySalary = totalSalary/12;
+    
     $('#totalCalc').html('<h3 id="mSalary">' + monthlySalary + '</h3>');
 
-    // if monthly salary is greater than 20000, turns background red
     if (monthlySalary > 20000) {
         $('#finalCalculation').removeClass('bg-dark');
         $('#finalCalculation').css('background-color', 'rgba(139, 0, 0, 0.637)');
@@ -98,13 +116,8 @@ function submitClick() {
         $('#tMonthlyTitle').css('color', 'white');
     }
 
-} // End submitclick
-
-// adds a new salary to the total salary
-function salaryCalc(newSalary) {
-    totalSalary += newSalary;
     return totalSalary;
-} //end SalaryCalc
+}
 
 
 // Adds new employee to the dom.
@@ -124,16 +137,11 @@ function removeEmployee(eDelete) {
             // I'm very surprised this worked!
             let currentDelete = ('#' + allEmployees[i].eId)
             $(currentDelete).remove();
-        }
 
-        // This is the part that actually removes the employee from the array I could probably have this inside of the previous if statement.
-
-        const index = allEmployees.indexOf(i);
-
-        if (index !== -1) {
-            allEmployees.splice(index, 1);
+            allEmployees.splice(i, 1);
         }
     }
+    totalESalary();
     return;
 } //end removeEmployee
 
