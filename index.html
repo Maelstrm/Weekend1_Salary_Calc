@@ -37,17 +37,17 @@
         <div>
 
             <!-- Form -->
-            <div id="form">
-                <div class="addButtons">
+            <div id="form" class="container">
+                <div class="addButtons" id="addButtons">
                     <input id="eFirstName" type="text" placeholder="First Name"></input>
                     <input id="eLastName" type="text" placeholder="Last Name"></input>
                     <input id="eId" type="number" placeholder="ID Number"></input>
                     <input id="eTitle" type="text" placeholder="Title"></input>
                     <input id="eSalary" type="number" placeholder="Salary"></input>
-                    <button id="submitButton"   class="btn btn-primary btn-sm button type="submit">Submit</button>
+                    <button id="submitButton" class="btn btn-primary btn-sm button" type="submit">Submit</button>
                 </div>
 
-                <div class="deleteButtons">
+                <div class="deleteButtons" id="deleteButtons">
                     <input id="eDelete" type="number" placeholder="ID Number"></input>
                     <button id="deleteButton" class="btn btn-danger btn-sm button" type="submit">Delete</button>
                 </div>
@@ -63,15 +63,15 @@
             <hr>
 
             <!-- Final Calculation Here -->
-            <div class="bg-dark text-muted row" id="finalCalculation">
+            <div class="bg-dark text-muted row finalCalculation" id="finalCalculation">
                 <span>
-                    <h2>Total Monthly: </h2>
+                    <h2 id="tMonthlyTitle">Total Monthly: </h2>
                 </span>
 
                 <hr>
 
                 <!-- Total Salary Calculations here -->
-                <span id=totalCalc>
+                <span id="totalCalc">
 
                 </span>
             </div>

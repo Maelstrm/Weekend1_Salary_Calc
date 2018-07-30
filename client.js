@@ -88,11 +88,14 @@ function submitClick() {
     monthlySalary = (totalSalary / 12).toFixed(2);
 
     // appends monthly salary to dom to replace the previous value that was displayed
-    $('#totalCalc').html('<h3>' + monthlySalary + '</h3>');
+    $('#totalCalc').html('<h3 id="mSalary">' + monthlySalary + '</h3>');
 
     // if monthly salary is greater than 20000, turns background red
     if (monthlySalary > 20000) {
-        $('#finalCalculation').css('background-color', 'red');
+        $('#finalCalculation').removeClass('bg-dark');
+        $('#finalCalculation').css('background-color', 'darkRed');
+        $('#mSalary').css('color', 'white');
+        $('#tMonthlyTitle').css('color', 'white');
     }
 
 } // End submitclick
